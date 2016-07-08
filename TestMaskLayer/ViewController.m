@@ -46,7 +46,7 @@
     [self.view.layer addSublayer:shapeLayer1];
     
     UIBezierPath *path2 = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 300, 200)];
-    [path2 appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(SCREEN_WIDTH / 2-50, 200) radius:100 startAngle:0 endAngle:2*M_PI clockwise:NO]];
+    [path2 appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(SCREEN_WIDTH / 2-50, 200) radius:100 startAngle:0 endAngle:2*M_PI clockwise:NO]];//改成YES后相交的部分无遮罩
     CAShapeLayer *shapeLayer2 = [CAShapeLayer layer];
     shapeLayer2.lineWidth = 5;
     shapeLayer2.strokeColor = [UIColor greenColor].CGColor;
@@ -61,8 +61,22 @@
      [_maskButton.layer addSublayer:shapeLayer2];
 //   [self.view.layer addSublayer:shapeLayer];
     
+     //下面是用来测试kCAFillRuleEvenOdd的
     
-    //下面是用来测试kCAFillRuleEvenOdd的
+    UIBezierPath *path3 = [UIBezierPath bezierPathWithRect:CGRectMake(0, 400, 300, 100)];
+    [path3 appendPath:[UIBezierPath bezierPathWithRect:CGRectMake(10, 420, 200, 180)]];
+    CAShapeLayer *shapeLayer3 = [CAShapeLayer layer];
+    shapeLayer3.lineWidth = 5;
+    shapeLayer3.strokeColor = [UIColor greenColor].CGColor;
+    shapeLayer3.fillColor = [UIColor blueColor].CGColor;
+    [shapeLayer3 setFillRule:kCAFillRuleEvenOdd];
+    shapeLayer3.path = path3.CGPath;
+    
+    //    [self.view.layer setMask:shapeLayer];
+    [_maskButton.layer addSublayer:shapeLayer3];
+    //   [self.view.layer addSublayer:shapeLayer];
+    
+    
 //    UIView* aView = [[UIView alloc] initWithFrame:CGRectMake(10,10, 100, 100)];
 //    //    aView.backgroundColor = [UIColor greenColor];
 //    [self.view addSubview:aView];
