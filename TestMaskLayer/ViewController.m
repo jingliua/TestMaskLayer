@@ -31,11 +31,12 @@
     
 //    UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:CGRectMake(150, 200, 500, 100)];
     UIBezierPath *path1 = [UIBezierPath bezierPathWithRect:CGRectMake(150, 200, 200, 100)];//矩形
-    [path1 appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(SCREEN_WIDTH / 2+100, 200) radius:100 startAngle:0 endAngle:2*M_PI clockwise:NO]];//圆
+    [path1 appendPath:[UIBezierPath bezierPathWithArcCenter:CGPointMake(SCREEN_WIDTH / 2+100, 200) radius:100 startAngle:M_PI endAngle:2*M_PI clockwise:NO]];//圆,
     CAShapeLayer *shapeLayer1 = [CAShapeLayer layer];
     shapeLayer1.lineWidth = 5;
     shapeLayer1.strokeColor = [UIColor orangeColor].CGColor;
     shapeLayer1.fillColor = [UIColor purpleColor].CGColor;
+//    shapeLayer1.fillColor = [UIColor clearColor].CGColor;
     shapeLayer1.path = path1.CGPath;
     
 //    [self.view.layer setMask:shapeLayer1];
